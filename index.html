@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lemuel Dipasupil</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio of Lemuel Dipasupil, pinned to a corkboard: rocketry with UASTARR, apps, websites and hackathon projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Karla:wght@400;500;700&family=DM+Mono:wght@400;500&family=Poppins:wght@600;700&display=swap">
+<style>
+/* Layout: a lilac wall, a wood-framed corkboard holding everything; each project is a pinned keepsake (polaroid, lanyard badge or sticker) with an index card under it. One deliberate look, not themed. */
+:root {
+  color-scheme: light;
+  --wall: #E8DCE2;
+  --wood: #B9864F;
+  --wood-dark: #8E6236;
+  --cork: #C99B68;
+  --cork-dark: #B5844F;
+  --paper: #FFFDF8;
+  --card: #FBF7EC;
+  --ink: #26221E;
+  --ink-soft: #4D463F;
+  --pen: #1F3A8A;
+  --sticky: #C8F08F;
+  --pin: rgba(235,240,245,0.92);
+  --ua-green: #275D38;
+  --ua-gold: #F2CD00;
+  --link: #1F3A8A;
+  --hand: 'Caveat', 'Bradley Hand', 'Segoe Print', cursive;
+  --body: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+body { background: var(--wall); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+a { color: var(--link); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+.page { overflow-x: clip; max-width: 1240px; margin: 0 auto; padding-block: 32px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* The board */
+.board {
+  position: relative;
+  border: 18px solid var(--wood);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px var(--wood-dark), 0 18px 40px rgba(60,40,30,0.25);
+  background-color: var(--cork);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(120,80,40,0.35) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgba(120,80,40,0.3) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 40% 80%, rgba(255,235,200,0.35) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 85% 15%, rgba(90,60,30,0.3) 0 1.2px, transparent 1.8px);
+  background-size: 7px 7px, 11px 11px, 9px 9px, 13px 13px;
+  padding: 32px clamp(16px, 3vw, 36px) 40px;
+  display: flex; flex-direction: column; gap: 30px;
+}
+.pin { position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff 0 25%, var(--pin) 26% 60%, rgba(160,170,180,0.9) 100%); box-shadow: 1px 3px 4px rgba(0,0,0,0.35); z-index: 3; }
+.tape { position: absolute; top: -12px; left: 50%; width: 90px; height: 26px; margin-left: -45px; background: rgba(255,255,240,0.55); box-shadow: 0 1px 2px rgba(0,0,0,0.12); transform: rotate(-3deg); z-index: 3; }
+
+/* Top row: hello */
+.hello { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; align-items: start; }
+.polaroid { position: relative; background: var(--paper); padding: 12px 12px 0; box-shadow: 0 6px 14px rgba(40,25,10,0.3); }
+.polaroid .shot { aspect-ratio: 1; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.polaroid .shot img { display: block; }
+.polaroid .cap { font-family: var(--hand); font-size: 28px; line-height: 1; text-align: center; padding: 12px 6px 16px; color: var(--ink); }
+.me { max-width: 270px; justify-self: center; --r: -3deg; }
+.me .shot img { width: 100%; height: 100%; object-fit: cover; }
+.intro { position: relative; background: var(--paper); padding: 30px 28px 26px; box-shadow: 0 6px 14px rgba(40,25,10,0.28); --r: 1.2deg; background-image: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(80,120,200,0.25) 31px 32px); background-position: 0 18px; min-width: 0; }
+.intro h1 { margin: 0 0 6px; font-family: var(--hand); font-weight: 700; font-size: clamp(44px, 6vw, 60px); line-height: 1; color: var(--pen); }
+.intro p { margin: 0 0 12px; font-family: var(--hand); font-size: 25px; line-height: 32px; color: var(--pen); }
+.intro .sig { text-align: right; font-size: 26px; }
+.side { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+
+/* U of A sticker */
+.ua { width: 170px; height: auto; --r: -7deg; filter: drop-shadow(0 0 0 #fff) drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff) drop-shadow(0 -5px 0 #fff) drop-shadow(0 6px 8px rgba(40,25,10,0.35)); }
+
+/* Section labels as torn paper */
+.label { align-self: flex-start; background: var(--paper); font-family: var(--hand); font-weight: 700; font-size: 38px; line-height: 1; padding: 10px 22px 12px; box-shadow: 0 4px 10px rgba(40,25,10,0.25); transform: rotate(-1.5deg); position: relative; }
+.label small { font-family: var(--body); font-weight: 500; font-size: 15px; color: var(--ink-soft); margin-left: 10px; }
+
+/* Projects */
+.items { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 36px 30px; margin-top: -6px; }
+.item { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.item:nth-child(4n+1) { --r: -2deg; }
+.item:nth-child(4n+2) { --r: 1.5deg; }
+.item:nth-child(4n+3) { --r: -1deg; }
+.item:nth-child(4n+4) { --r: 2.2deg; }
+.item .polaroid { width: 100%; max-width: 280px; }
+.item .shot { padding: 18px; }
+.item .shot img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.note { position: relative; width: 100%; max-width: 290px; margin-top: -10px; background: var(--card); padding: 18px 18px 16px; box-shadow: 0 4px 10px rgba(40,25,10,0.25); border-top: 3px solid #E58A9A; z-index: 1; transform: rotate(1deg); }
+.note .when { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+.note h3 { margin: 2px 0 6px; font-family: var(--hand); font-weight: 700; font-size: 32px; line-height: 1; }
+.note p { margin: 0 0 10px; font-size: 15px; color: var(--ink-soft); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tags span { font-family: var(--mono); font-size: 11.5px; background: #fff; border: 1px solid rgba(38,34,30,0.25); padding: 1px 8px; border-radius: 2px; }
+.links { display: flex; flex-wrap: wrap; gap: 16px; font-weight: 700; font-size: 15px; }
+.links .none { font-weight: 400; color: var(--ink-soft); }
+
+/* Lanyard badges */
+.badge-wrap { position: relative; width: 100%; max-width: 250px; display: flex; flex-direction: column; align-items: center; padding-top: 36px; }
+.lanyard { position: absolute; top: -10px; width: 26px; height: 54px; border-radius: 3px; }
+.clip { position: absolute; top: 34px; width: 16px; height: 22px; border: 3px solid #B9BEC6; border-radius: 8px; z-index: 2; }
+.badge { position: relative; width: 100%; aspect-ratio: 5 / 7; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 16px rgba(30,20,10,0.35); display: flex; flex-direction: column; }
+.badge .hole { position: absolute; top: 12px; left: 50%; margin-left: -9px; width: 18px; height: 10px; border-radius: 6px; background: var(--cork-dark); }
+/* natHacks-style */
+.b-nat { background: linear-gradient(160deg, #8F8BD8 0%, #5F57B8 55%, #463F9E 100%); color: #fff; padding: 34px 20px 18px; gap: 10px; }
+.b-nat .ev { font-family: 'Poppins', var(--body); font-weight: 600; font-size: 20px; text-align: right; }
+.b-nat svg { width: 60%; align-self: center; }
+.b-nat .role { font-family: 'Poppins', var(--body); font-weight: 700; font-size: 26px; margin-top: auto; }
+.b-nat .name { background: #F4F2EE; color: #111; text-align: center; font-size: 17px; line-height: 1.25; padding: 8px; border-radius: 2px; }
+/* StormHacks-style */
+.b-storm { background: #fff; }
+.b-storm .top { background: #4F7BE0; flex: 1; padding: 30px 18px 18px; display: flex; flex-direction: column; justify-content: space-between; }
+.b-storm .dots { display: grid; grid-template-columns: repeat(4, 12px); gap: 6px; }
+.b-storm .dots i { width: 12px; height: 12px; border-radius: 50%; background: #fff; display: block; }
+.b-storm .dots i.o { background: transparent; }
+.b-storm { container-type: inline-size; }
+.b-storm .role { white-space: nowrap; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 32px; font-size: 13.5cqi; color: #111; text-align: center; }
+.b-storm .bottom { height: 34%; display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; gap: 8px; }
+.b-storm .bottom img { width: 62%; }
+.b-storm .bottom svg { width: 30%; }
+/* HackED-style */
+.b-hacked { background: #fff; color: #1B2A3A; }
+.b-hacked .art { padding: 34px 14px 0; flex: 1; display: flex; align-items: center; }
+.b-hacked .art img { width: 100%; }
+.b-hacked .role { font-family: 'Poppins', var(--body); font-weight: 700; font-size: 26px; padding: 0 18px 10px; background: linear-gradient(90deg, #5FA8F5, #3CCFA0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.b-hacked .foot-band { background: #12243F; padding: 14px 18px; display: flex; justify-content: center; }
+.b-hacked .foot-band img { width: 86%; }
+
+/* STARR patch */
+.patch-wrap { position: relative; width: 100%; max-width: 280px; }
+.patch { position: absolute; right: -26px; bottom: 26px; width: 88px; height: 88px; transform: rotate(10deg); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35)); z-index: 2; }
+
+.lower { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px 36px; align-items: start; }
+.lower-col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.lower-col:last-child { grid-column: span 2; }
+@media (max-width: 760px) { .lower-col:last-child { grid-column: auto; } }
+
+/* Courses: one flashcard each */
+.courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 24px; }
+.course { position: relative; padding: 24px 20px 22px; box-shadow: 0 5px 12px rgba(40,25,10,0.28); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.course:nth-child(1) { --r: -2.5deg; }
+.course:nth-child(2) { --r: 1.8deg; }
+.course:nth-child(3) { --r: -1deg; }
+.course:nth-child(4) { --r: 2.6deg; }
+.course svg { width: 44px; height: 44px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.course .code { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); letter-spacing: 0.04em; }
+.course h3 { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 30px; line-height: 1.05; }
+
+/* About + contact */
+.about { display: grid; grid-template-columns: 1fr 1.6fr auto 1fr; gap: 28px; align-items: start; }
+@media (max-width: 900px) { .about { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
+.index { --line: 56px; position: relative; background: var(--paper); padding: 16px 24px 22px; box-shadow: 0 6px 14px rgba(40,25,10,0.28); --r: -1deg; background-image: linear-gradient(to bottom, transparent var(--line), rgba(229,138,154,0.6) var(--line) calc(var(--line) + 1.5px), transparent calc(var(--line) + 1.5px)), repeating-linear-gradient(to bottom, transparent 0 27px, rgba(80,120,200,0.22) 27px 28px); min-width: 0; }
+.index h2 { margin: 0 0 14px; font-family: var(--hand); font-weight: 700; font-size: 34px; line-height: 1; }
+.index dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 15px; line-height: 24px; }
+.index dt { color: var(--ink-soft); }
+.index dd { margin: 0; font-weight: 500; }
+.sticky { position: relative; background: var(--sticky); padding: 26px 22px 22px; box-shadow: 0 6px 12px rgba(40,25,10,0.25); --r: 2deg; font-family: var(--hand); font-size: 26px; line-height: 1.3; min-width: 0; }
+.sticky h2 { margin: 0 0 8px; font-size: 36px; line-height: 1; }
+.sticky a { display: block; color: var(--ink); word-break: break-word; }
+.ribbon { justify-self: center; width: 150px; background: #6E1F2E; color: #F2D9A0; text-align: center; padding: 18px 10px 40px; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 86%, 0 100%); --r: -4deg; box-shadow: 0 4px 8px rgba(0,0,0,0.25); font-family: var(--body); position: relative; }
+.ribbon b { display: block; font-size: 13px; letter-spacing: 0.12em; }
+.ribbon span { display: block; font-family: var(--hand); font-size: 26px; line-height: 1.05; margin-top: 8px; color: #fff; }
+.note ul { margin: 0 0 10px; padding-left: 18px; font-size: 14px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 4px; }
+.toolbox { --r: 1.4deg; }
+.work-row { display: flex; justify-content: center; }
+.work-row .work { width: 100%; max-width: 330px; }
+.work { display: flex; flex-direction: column; align-items: center; min-width: 0; --r: -1.2deg; }
+.work .note { margin-top: -14px; padding-top: 26px; }
+.button-pin { position: relative; z-index: 2; width: 116px; height: 116px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; --r: 8deg; transform: rotate(var(--r)); box-shadow: inset 0 0 0 5px #fff, inset 0 0 0 7px rgba(0,0,0,0.08), inset -6px -8px 14px rgba(0,0,0,0.12), 0 6px 10px rgba(30,20,10,0.4); }
+.button-pin::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 32% 26%, rgba(255,255,255,0.75) 0 12%, rgba(255,255,255,0) 40%); }
+.button-pin img { width: 64%; height: 64%; }
+.foot { text-align: center; font-family: var(--hand); font-size: 22px; color: var(--ink-soft); margin-top: 18px; }
+
+/* Every pinned object: tilt comes from --r, and a little shake on hover */
+.obj { transform: rotate(var(--r, 0deg)); transform-origin: 50% 14px; }
+@keyframes wiggle {
+  0%, 100% { transform: rotate(var(--r, 0deg)); }
+  20% { transform: rotate(calc(var(--r, 0deg) - 3deg)); }
+  45% { transform: rotate(calc(var(--r, 0deg) + 2.4deg)); }
+  70% { transform: rotate(calc(var(--r, 0deg) - 1.2deg)); }
+  85% { transform: rotate(calc(var(--r, 0deg) + 0.5deg)); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .shake:hover { animation: wiggle 0.5s ease-in-out; }
+}
+/* Only clickable things shake: project polaroids/badges, the AHS pin and the photos */
+.item > :is(.polaroid, .patch-wrap, .badge-wrap) { --r: 0deg; transform: rotate(var(--r)); transform-origin: 50% 14px; }
+.shake { cursor: pointer; }
+.snap.shake { cursor: zoom-in; }
+.shake:focus-visible { outline: 3px solid var(--pen); outline-offset: 4px; }
+.more-btn { display: none; margin-top: 8px; padding: 2px 0; background: none; border: 0; border-bottom: 2px solid #E58A9A; font-family: var(--hand); font-weight: 700; font-size: 21px; line-height: 1.1; color: var(--pen); cursor: pointer; }
+.more-btn:hover { color: var(--ink); }
+
+/* Desktop: the whole board is one fixed-size stage scaled to fit the window, so nothing scrolls */
+html.stage, html.stage body { height: 100%; overflow: hidden; }
+html.stage body { margin: 0; }
+html.stage .page { max-width: none; padding: 0; }
+html.stage .board { position: fixed; left: 50%; top: 50%; width: 1700px; height: 940px; padding: 0; display: block; transform: translate(-50%, -50%) scale(var(--s, 1)); }
+html.stage :is(.hello, .side, .items, .lower, .lower-col, .work-row, .courses, .about) { display: contents; }
+html.stage :is(.obj, .label) { position: absolute; margin: 0; }
+html.stage .foot { display: none; }
+html.stage .label { font-size: 30px; padding: 8px 18px 10px; }
+.more { display: none; }
+.more-btn { display: inline-block; }
+
+/* Phones and small screens: tighter board, text kept inside its card */
+html:not(.stage) .board { gap: 20px; padding: 22px 14px 26px; }
+html:not(.stage) .hello { gap: 18px; }
+html:not(.stage) .me { max-width: 220px; }
+html:not(.stage) .side { gap: 14px; }
+html:not(.stage) .ua { width: 118px; }
+html:not(.stage) .intro { padding: 22px 20px 14px; background-image: repeating-linear-gradient(to bottom, transparent 0 27px, rgba(80,120,200,0.25) 27px 28px); background-position: 0 14px; }
+html:not(.stage) .intro h1 { font-size: 44px; }
+html:not(.stage) .intro p { font-size: 22px; line-height: 28px; margin-bottom: 10px; }
+html:not(.stage) .intro .sig { margin: 0; }
+html:not(.stage) .label { font-size: 30px; padding: 8px 18px 10px; }
+html:not(.stage) .items { gap: 24px; margin-top: 0; }
+html:not(.stage) .item .polaroid, html:not(.stage) .patch-wrap { max-width: 230px; }
+html:not(.stage) .item .polaroid .cap { font-size: 24px; padding: 10px 6px 12px; }
+html:not(.stage) .badge-wrap { max-width: 210px; }
+html:not(.stage) .snaps { gap: 12px; margin: 12px 0 2px; }
+html:not(.stage) .snap { width: 118px; }
+html:not(.stage) .snap.wide { width: 190px; }
+html:not(.stage) .note { padding: 14px 16px 12px; }
+html:not(.stage) .note h3 { font-size: 30px; }
+html:not(.stage) .lower { gap: 20px 36px; }
+html:not(.stage) .lower-col { gap: 16px; }
+html:not(.stage) .button-pin { width: 96px; height: 96px; }
+html:not(.stage) .courses { gap: 16px 14px; }
+html:not(.stage) .course { padding: 18px 12px 14px; gap: 4px; }
+html:not(.stage) .course svg { width: 36px; height: 36px; }
+html:not(.stage) .course h3 { font-size: 22px; overflow-wrap: break-word; }
+html:not(.stage) .about { gap: 20px; }
+html:not(.stage) .ribbon { width: 130px; padding: 14px 8px 34px; }
+html:not(.stage) .ribbon span { font-size: 22px; }
+html:not(.stage) .sticky { font-size: 24px; }
+html:not(.stage) .foot { margin-top: 12px; }
+@media (max-width: 560px) {
+  html:not(.stage) .hello { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "me side" "intro intro"; align-items: center; }
+  html:not(.stage) .me { grid-area: me; max-width: 200px; justify-self: start; }
+  html:not(.stage) .side { grid-area: side; }
+  html:not(.stage) .intro { grid-area: intro; }
+  html:not(.stage) .ua { width: 104px; }
+  html:not(.stage) .side { gap: 18px; }
+  html:not(.stage) .side { align-items: flex-end; }
+  html:not(.stage) .side .ua { align-self: center; }
+  html:not(.stage) .side .pennant { width: 168px; margin: -6px -4px 0 -64px; --r: -10deg; z-index: 2; }
+  .index dl { display: block; }
+  .index dd { margin-bottom: 6px; }
+}
+
+html.stage #o-me { left: 26px; top: 26px; width: 190px; max-width: none; }
+html.stage .me .cap { font-size: 24px; padding: 10px 6px 12px; }
+html.stage #o-intro { left: 238px; top: 22px; width: 336px; padding: 20px 24px 14px; background-image: repeating-linear-gradient(to bottom, transparent 0 23px, rgba(80,120,200,0.25) 23px 24px); background-position: 0 12px; }
+html.stage .intro h1 { font-size: 42px; margin-bottom: 8px; }
+html.stage .intro p { font-size: 19px; line-height: 24px; margin-bottom: 8px; }
+html.stage .intro .sig { font-size: 21px; margin: 0; }
+html.stage #o-ua { left: 624px; top: 18px; width: 104px; filter: drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(0 5px 6px rgba(40,25,10,0.35)); }
+html.stage #contact { left: 584px; top: 162px; width: 180px; padding: 20px 14px 14px; font-size: 19px; line-height: 1.3; }
+html.stage #contact a[href^="mailto"] { font-size: 17px; }
+html.stage .sticky h2 { font-size: 30px; }
+
+html.stage [data-pos="l-work"] { left: 24px; top: 332px; }
+html.stage #o-work { left: 30px; top: 396px; width: 236px; }
+html.stage .button-pin { width: 92px; height: 92px; }
+html.stage [data-pos="l-classes"] { left: 300px; top: 332px; }
+html.stage .course { width: 212px; flex-direction: row; align-items: center; gap: 12px; padding: 18px 16px 16px; }
+html.stage .course svg { width: 36px; height: 36px; flex: none; }
+html.stage .course h3 { font-size: 23px; }
+html.stage #o-c1 { left: 302px; top: 398px; }
+html.stage #o-c2 { left: 534px; top: 404px; }
+html.stage #o-c3 { left: 302px; top: 504px; }
+html.stage #o-c4 { left: 534px; top: 508px; }
+
+html.stage #o-school { left: 26px; top: 640px; width: 204px; padding: 16px 20px 16px; --line: 52px; }
+html.stage #o-school dl { display: block; font-size: 14px; line-height: 20px; }
+html.stage #o-school dd { margin-bottom: 6px; }
+html.stage .index h2 { font-size: 30px; margin-bottom: 14px; }
+html.stage #o-toolbox { left: 248px; top: 628px; width: 344px; padding: 16px 20px 16px; --line: 52px; }
+html.stage #o-toolbox dl { font-size: 13.5px; line-height: 20px; gap: 4px 12px; }
+html.stage #o-ribbon { left: 598px; top: 762px; width: 120px; padding: 16px 8px 38px; }
+html.stage .ribbon span { font-size: 22px; }
+
+html.stage [data-pos="l-built"] { left: 800px; top: 22px; }
+html.stage .item { width: 244px; }
+html.stage #o-p1 { left: 800px; top: 494px; }
+html.stage #o-p2 { left: 1066px; top: 74px; }
+html.stage #o-p3 { left: 1350px; top: 68px; }
+html.stage #o-p4 { left: 766px; top: 84px; }
+html.stage #o-p5 { left: 1100px; top: 482px; }
+html.stage #o-p6 { left: 1400px; top: 500px; }
+html.stage .item .polaroid, html.stage .patch-wrap { max-width: 196px; }
+html.stage .item .polaroid .cap { font-size: 24px; padding: 10px 6px 12px; }
+html.stage .patch { width: 64px; height: auto; right: auto; left: -22px; bottom: 30px; transform: rotate(-10deg); }
+html.stage .badge-wrap { zoom: 0.66; }
+html.stage .note { margin-top: -8px; padding: 12px 16px 10px; }
+html.stage .note h3 { font-size: 27px; margin-bottom: 6px; }
+html.stage .badge-wrap + .note { margin-top: 8px; }
+html.stage .work .note { margin-top: -12px; padding-top: 20px; }
+
+
+.patch.sticker { width: 66px; height: auto; transform: rotate(-8deg); filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 4px 5px rgba(40,25,10,0.35)); }
+
+
+/* Golden Bears pennant, tacked at its wide end */
+.pennant { position: relative; width: 240px; --r: -6deg; filter: drop-shadow(0 5px 6px rgba(40,25,10,0.3)); }
+.pennant img { display: block; width: 100%; height: auto; }
+.pennant .pin { top: 50%; left: 12px; margin: -9px 0 0; }
+html.stage #o-pennant { left: 534px; top: 300px; width: 224px; --r: -4deg; z-index: 2; }
+html:not(.stage) .pennant { width: 200px; }
+
+/* natHacks snapshots pinned around the Gaze badge */
+.snaps { display: flex; justify-content: center; gap: 18px; margin: 16px 0 6px; }
+.snap { cursor: zoom-in; position: relative; margin: 0; width: 132px; background: var(--paper); padding: 8px 8px 0; box-shadow: 0 5px 12px rgba(40,25,10,0.3); }
+.snap img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.snap figcaption { font-family: var(--hand); font-size: 19px; line-height: 1; text-align: center; padding: 7px 2px 9px; }
+#o-snap1 { --r: -6deg; }
+#o-snap2 { --r: 5deg; }
+#o-snap3 { --r: -5deg; }
+#o-snap4 { --r: 6deg; }
+#o-snap5 { --r: -4deg; }
+.snap.wide { width: 220px; }
+.snap.wide img { aspect-ratio: 6 / 5; }
+html.stage .snaps { display: block; margin: 0; }
+html.stage :is(#o-p1, #o-p2, #o-p3, #o-p5) { z-index: 3; }
+html.stage .snap { position: absolute; width: 118px; z-index: -1; }
+html.stage .snap figcaption { font-size: 17px; }
+html.stage #o-snap1 { left: -76px; top: 30px; }
+html.stage #o-snap2 { right: -66px; top: 66px; }
+html.stage #o-snap3 { left: -68px; top: 22px; width: 104px; }
+html.stage #o-snap4 { right: -66px; top: 76px; width: 104px; }
+html.stage .snap.wide { width: 128px; }
+html.stage #o-snap5 { left: -82px; top: 28px; }
+html.stage #o-snap6 { left: -160px; top: 104px; width: 160px; }
+#o-snap6 { --r: -4deg; }
+html.stage .snap:hover { z-index: 6; }
+
+/* "Read more" card */
+.detail { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(40,25,10,0.45); }
+.detail[hidden] { display: none; }
+.detail-card { position: relative; width: 100%; max-width: 480px; max-height: calc(100vh - 48px); overflow: auto; background: var(--card); border-top: 4px solid #E58A9A; box-shadow: 0 18px 40px rgba(30,20,10,0.4); padding: 26px 28px 22px; transform: rotate(-0.6deg); }
+.detail .detail-card .note { margin: 0; padding: 0; box-shadow: none; border: 0; transform: none; max-width: none; background: none; }
+.detail .detail-card .note h3 { font-size: 38px; }
+.detail .detail-card .note p, .detail .detail-card .note ul { font-size: 16px; }
+.detail .detail-card .more { display: block; margin-top: 12px; }
+.detail .detail-card .more-btn { display: none; }
+html .detail .detail-card .snap { position: static; z-index: auto; width: 100%; margin: 24px 0 0; transform: none; animation: none; cursor: default; box-shadow: none; padding: 0; }
+.detail .detail-card .snap .pin { display: none; }
+html .detail .detail-card .snap img { aspect-ratio: auto; width: 100%; max-height: calc(100vh - 160px); object-fit: contain; }
+.detail .detail-card .snap figcaption { font-size: 28px; padding-top: 12px; }
+.detail-close { position: absolute; top: 8px; right: 10px; width: 40px; height: 40px; border: 0; background: none; font-size: 30px; line-height: 1; color: var(--ink-soft); cursor: pointer; }
+.detail-close:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="board">
+
+    <section class="hello" aria-label="Introduction">
+      <figure class="polaroid me obj" id="o-me" style="margin: 0;">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="shot"><img src="assets/headshot.jpg" alt="Portrait of Lemuel Dipasupil"></div>
+        <figcaption class="cap">me :)</figcaption>
+      </figure>
+
+      <div class="intro obj" id="o-intro">
+        <span class="tape" aria-hidden="true"></span>
+        <h1>Hi, I'm Lemuel!</h1>
+        <p>I'm a computer science student at the University of Alberta. I write firmware for a student rocket and build apps with friends, usually at hackathons.</p>
+        <p>Everything on this board is something I made. Each one links to its code.</p>
+        <p class="sig">— Lem D</p>
+      </div>
+
+      <div class="side">
+        <img class="ua obj" id="o-ua" src="assets/uofa.png" alt="University of Alberta emblem sticker">
+        <div class="pennant obj" id="o-pennant"><span class="pin" aria-hidden="true"></span><img src="assets/pennant.png" alt="U of A Golden Bears pennant"></div>
+      </div>
+    </section>
+
+    <h2 class="label" id="work-title" data-pos="l-built">Things I've built</h2>
+    <div class="items" aria-labelledby="work-title">
+
+      <article class="item obj" id="o-p1" data-cat="rocketry">
+        <div class="patch-wrap">
+          <figure class="polaroid" style="margin: 0;">
+            <span class="pin" aria-hidden="true"></span>
+            <div class="shot" style="background: #2E3440;"><img src="assets/starr.png" alt="STARR, Student Team for Alberta Rocketry Research logo"></div>
+            <figcaption class="cap">STARR · Alberio</figcaption>
+          </figure>
+          <img class="patch sticker" src="assets/alberio.png" alt="Alberio rocket logo sticker">
+        </div>
+        <div class="snaps">
+          <figure class="snap wide obj" id="o-snap6"><span class="pin" aria-hidden="true"></span><img src="assets/rocketlab.jpg" alt="UASTARR rockets in the rocket lab"><figcaption>the rocket lab</figcaption></figure>
+        </div>
+        <div class="note">
+          <span class="when">UASTARR · Firmware · Aug 2026</span>
+          <h3>STARR Power Distribution</h3>
+          <div class="links"><a href="https://uastarr.ca/" target="_blank" rel="noopener">UASTARR site ↗</a><a href="https://github.com/UASTARR/SRAD_PowerDist2026" target="_blank" rel="noopener">Repo ↗</a></div>
+          <div class="more">
+          <p>Firmware developer for the power distribution board on UASTARR's Alberio rocket.</p>
+          <ul>
+            <li>I2C driver in C for the MAX17320 fuel gauge on an STM32L4: charge, voltage, current, temperature and faults.</li>
+            <li>Timeouts, 3-attempt retries and typed error codes, so a stuck sensor never stalls the main loop.</li>
+            <li>CAN fragmentation layer that splits full status reports across 8-byte frames.</li>
+            <li>Command dispatcher that lets other avionics boards switch power rails remotely.</li>
+          </ul>
+          <div class="tags"><span>C</span><span>STM32L4</span><span>I2C</span><span>CAN</span></div>
+          </div>
+          <button type="button" class="more-btn">Read more</button>
+        </div>
+      </article>
+
+      <article class="item obj" id="o-p2" data-cat="apps hackathon">
+        <div class="badge-wrap">
+          <span class="lanyard" style="background: repeating-linear-gradient(180deg, #1A1A1A 0 10px, #E8622A 10px 18px);" aria-hidden="true"></span>
+          <span class="clip" aria-hidden="true"></span>
+          <div class="badge b-storm" role="img" aria-label="StormHacks hacker badge with the munch logo">
+            <span class="hole" aria-hidden="true"></span>
+            <div class="top">
+              <div class="dots" aria-hidden="true"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i></div>
+              <div class="role">[ Hacker ];</div>
+            </div>
+            <div class="bottom">
+              <img src="assets/munch.png" alt="">
+              <svg viewBox="0 0 60 70" aria-hidden="true"><ellipse cx="30" cy="66" rx="18" ry="3" fill="rgba(0,0,0,0.12)"></ellipse><path d="M18 64 L18 30 C18 16 24 8 32 8 C42 8 46 16 46 26 L46 64 Z" fill="#6CCB5F"></path><path d="M46 56 L58 62 L46 62 Z" fill="#6CCB5F"></path><rect x="22" y="16" width="22" height="10" rx="5" fill="#9AA3AD"></rect><circle cx="14" cy="40" r="7" fill="none" stroke="#E8A13A" stroke-width="4"></circle></svg>
+            </div>
+          </div>
+        </div>
+        <div class="snaps">
+          <figure class="snap wide obj" id="o-snap5"><span class="pin" aria-hidden="true"></span><img src="assets/storm1.jpg" alt="The munch team in front of the StormHacks banner"><figcaption>StormHacks '26</figcaption></figure>
+        </div>
+        <div class="note">
+          <span class="when">StormHacks · Full-stack · Oct 2026</span>
+          <h3>munch</h3>
+          <div class="links"><a href="https://kevinc6-frontend.expo.app/" target="_blank" rel="noopener">Live app ↗</a><a href="https://github.com/AbdouMurad/munch" target="_blank" rel="noopener">Repo ↗</a></div>
+          <div class="more">
+          <p>Tinder for food: a group swipes on nearby restaurants and the first place everybody likes wins. I was a full-stack developer.</p>
+          <ul>
+            <li>FastAPI backend that streams lobby, swipe and match events over WebSockets, with matches reaching every phone in under 3 seconds.</li>
+            <li>Python crawler that tiles each city into 1.5 km cells, building a PostGIS database of 3,000 restaurants per city in Edmonton and Vancouver.</li>
+            <li>Ranking that mixes rating, price, popularity and distance into a varied 80-card deck per room.</li>
+            <li>Google and email sign-in, kept safe by mypy --strict and 100+ pytest tests.</li>
+          </ul>
+          <div class="tags"><span>FastAPI</span><span>WebSockets</span><span>PostgreSQL</span><span>PostGIS</span><span>Expo</span></div>
+          </div>
+          <button type="button" class="more-btn">Read more</button>
+        </div>
+      </article>
+
+      <article class="item obj" id="o-p3" data-cat="apps hackathon">
+        <div class="badge-wrap">
+          <span class="lanyard" style="background: linear-gradient(180deg, #5FA8F5, #3CCFA0);" aria-hidden="true"></span>
+          <span class="clip" aria-hidden="true"></span>
+          <div class="badge b-hacked" role="img" aria-label="HackED 2026 hacker badge with the CheetCode logo">
+            <span class="hole" aria-hidden="true"></span>
+            <div class="art"><img src="assets/hacked.png" alt=""></div>
+            <div class="role">Hacker</div>
+            <div class="foot-band"><img src="assets/cheetcode.png" alt=""></div>
+          </div>
+        </div>
+        <div class="snaps">
+          <figure class="snap obj" id="o-snap3"><span class="pin" aria-hidden="true"></span><img src="assets/hk1.jpg" alt="The CheetCode team coding at HackED 2026"><figcaption>HackED '26</figcaption></figure>
+          <figure class="snap obj" id="o-snap4"><span class="pin" aria-hidden="true"></span><img src="assets/hk2.jpg" alt="Late night coding on CheetCode at HackED 2026"><figcaption>late night code</figcaption></figure>
+        </div>
+        <div class="note">
+          <span class="when">HackED · Co-developer · Feb 2026 – now</span>
+          <h3>CheetCode</h3>
+          <div class="links"><a href="https://playcheetcode.vercel.app/" target="_blank" rel="noopener">Play it ↗</a><a href="https://github.com/AVEDtek/CheetCode" target="_blank" rel="noopener">Repo ↗</a></div>
+          <div class="more">
+          <p>A full-stack educational web game: players code in turns, run tests, and vote on who the secret imposter is. I'm a co-developer.</p>
+          <ul>
+            <li>Python WebSocket server that keeps game state in sync across 5 players with near-zero lag.</li>
+            <li>Custom protocol of 16 client and 31 server message types, including real-time collaborative editing.</li>
+            <li>React client connected over WebSockets and deployed on Vercel.</li>
+          </ul>
+          <div class="tags"><span>Python</span><span>WebSockets</span><span>React</span><span>Vercel</span></div>
+          </div>
+          <button type="button" class="more-btn">Read more</button>
+        </div>
+      </article>
+
+      <article class="item obj" id="o-p4" data-cat="apps">
+        <figure class="polaroid" style="margin: 0;">
+          <span class="pin" aria-hidden="true"></span>
+          <div class="shot" style="background: #13203A;"><img src="assets/paycheck.png" alt="PayCheck logo"></div>
+          <figcaption class="cap">budget, but easy</figcaption>
+        </figure>
+        <div class="note">
+          <span class="when">Oct 2026</span>
+          <h3>PayCheck</h3>
+          <div class="links"><span class="none">iPhone app</span><a href="https://github.com/Lem-D/PayCheck" target="_blank" rel="noopener">Repo ↗</a></div>
+          <div class="more">
+          <p>A budgeting app built around one idea: every paycheque gets split up front. Set what you can spend per category, and the rest goes straight into savings.</p>
+          <div class="tags"><span>React Native</span><span>Expo</span></div>
+          </div>
+          <button type="button" class="more-btn">Read more</button>
+        </div>
+      </article>
+
+      <article class="item obj" id="o-p5" data-cat="hackathon">
+        <div class="badge-wrap">
+          <span class="lanyard" style="background: #F07A3A;" aria-hidden="true"></span>
+          <span class="clip" aria-hidden="true"></span>
+          <div class="badge b-nat" role="img" aria-label="natHacks 2025 hacker badge with the Gaze logo">
+            <span class="hole" aria-hidden="true"></span>
+            <div class="ev">natHacks 2025</div>
+            <svg viewBox="0 0 120 100" aria-hidden="true">
+              <g fill="none" stroke="#E0408E" stroke-width="9" stroke-linecap="round">
+                <circle cx="22" cy="18" r="8"></circle><circle cx="60" cy="10" r="8"></circle><circle cx="98" cy="18" r="8"></circle>
+                <path d="M10 76 L10 54 C10 42 34 42 34 54 L34 80 C34 94 52 94 52 80 L52 50 C52 38 68 38 68 50 L68 80 C68 94 86 94 86 80 L86 54 C86 42 110 42 110 54 L110 76"></path>
+              </g>
+            </svg>
+            <img src="assets/gaze.png" alt="" style="width: 78%; align-self: center;">
+            <div class="role">Hacker</div>
+            <div class="name">Lemuel Dipasupil</div>
+          </div>
+        </div>
+        <div class="snaps">
+          <figure class="snap obj" id="o-snap1"><span class="pin" aria-hidden="true"></span><img src="assets/nat1.jpg" alt="The Gaze team taking a selfie at natHacks 2025"><figcaption>natHacks '25</figcaption></figure>
+          <figure class="snap obj" id="o-snap2"><span class="pin" aria-hidden="true"></span><img src="assets/nat2.jpg" alt="The team hacking on Gaze at natHacks 2025"><figcaption>building gaze</figcaption></figure>
+        </div>
+        <div class="note">
+          <span class="when">natHacks · Nov 2025</span>
+          <h3>Gaze</h3>
+          <div class="links"><span class="none">Runs locally</span><a href="https://github.com/arronroasa/gaze-nathacks2025" target="_blank" rel="noopener">Repo ↗</a></div>
+          <div class="more">
+          <p>A way to use your computer hands-free, built at natHacks 2025 with EMG signal processing and computer vision.</p>
+          <div class="tags"><span>Python</span><span>OpenCV</span><span>Arduino</span></div>
+          </div>
+          <button type="button" class="more-btn">Read more</button>
+        </div>
+      </article>
+
+      <article class="item obj" id="o-p6" data-cat="web">
+        <figure class="polaroid" style="margin: 0;">
+          <span class="pin" aria-hidden="true"></span>
+          <div class="shot" style="background: #951B2D; padding: 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="50 78 540 540" style="width: 100%; height: 100%;" role="img" aria-label="MacEwan University Law Club logo">
+  
+  <g fill="#FFFFFF" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-weight="700" text-anchor="middle">
+    <text x="320" y="234" font-size="38" textLength="514" lengthAdjust="spacingAndGlyphs">MACEWAN UNIVERSITY</text>
+    <text x="320" y="318" font-size="80" textLength="510" lengthAdjust="spacingAndGlyphs" letter-spacing="4">LAW  CLUB</text>
+  </g>
+  <g stroke="#FFFFFF" stroke-linecap="round">
+    <line x1="56" y1="246" x2="584" y2="246" stroke-width="3"/>
+    <line x1="56" y1="342" x2="584" y2="342" stroke-width="3"/>
+  </g>
+  <!-- Scales of justice -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M250 394 Q320 382 390 394"/>
+    <line x1="320" y1="380" x2="320" y2="474"/>
+    <line x1="256" y1="394" x2="232" y2="440"/>
+    <line x1="256" y1="394" x2="280" y2="440"/>
+    <line x1="384" y1="394" x2="360" y2="440"/>
+    <line x1="384" y1="394" x2="408" y2="440"/>
+    <path d="M226 440 Q256 462 286 440 Z"/>
+    <path d="M354 440 Q384 462 414 440 Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <circle cx="320" cy="376" r="6"/>
+    <circle cx="250" cy="394" r="4.5"/>
+    <circle cx="390" cy="394" r="4.5"/>
+    <path d="M314 468 L326 468 L330 482 Q350 486 354 494 L286 494 Q290 486 310 482 Z"/>
+    <rect x="282" y="494" width="76" height="6" rx="3"/>
+  </g>
+</svg></div>
+          <figcaption class="cap">law club site</figcaption>
+        </figure>
+        <div class="note">
+          <span class="when">Oct 2026</span>
+          <h3>MULC Website</h3>
+          <div class="links"><a href="https://lem-d.github.io/MULC-Website/" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/Lem-D/MULC-Website" target="_blank" rel="noopener">Repo ↗</a></div>
+          <div class="more">
+          <p>The official site for the MacEwan University Law Club: the execs, upcoming events, photos, how to join, and how to get in touch.</p>
+          <div class="tags"><span>Astro</span><span>GitHub Pages</span></div>
+          </div>
+          <button type="button" class="more-btn">Read more</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="lower">
+      <div class="lower-col">
+    <h2 class="label" id="work-exp-title" data-pos="l-work">Where I've worked</h2>
+    <div class="work-row" aria-labelledby="work-exp-title">
+    <div class="work obj" id="o-work">
+      <span class="button-pin" role="img" aria-label="Alberta Health Services button pin"><img src="assets/ahs.png" alt=""></span>
+      <div class="note">
+        <span class="when">Work · Mar 2026 – now</span>
+        <h3>Patient Food Services</h3>
+        <div class="more">
+        <p>Casual employee at Alberta Health Services, Edmonton.</p>
+        <ul>
+          <li>Prepare hundreds of patient meals in 3-hour service windows, following dietary restrictions and food safety standards.</li>
+          <li>Clean and sanitize hundreds of dishes and pieces of kitchen equipment per shift (about 20 hours a week), to hospital infection control standards.</li>
+        </ul>
+        </div>
+        <button type="button" class="more-btn">Read more</button>
+      </div>
+    </div>
+    </div>
+      </div>
+      <div class="lower-col">
+    <h2 class="label" id="classes-title" data-pos="l-classes">Classes that stuck</h2>
+    <div class="courses" aria-labelledby="classes-title">
+      <div class="course obj" id="o-c1" style="background: #FFF3B0;">
+        <span class="pin" aria-hidden="true"></span>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="10" rx="16" ry="6"></ellipse><path d="M8 10 V36 C8 39 15 42 24 42 C33 42 40 39 40 36 V10"></path><path d="M8 19 C8 22 15 25 24 25 C33 25 40 22 40 19"></path><path d="M8 28 C8 31 15 34 24 34 C33 34 40 31 40 28"></path></svg>
+        <h3>File &amp; Database Management</h3>
+      </div>
+      <div class="course obj" id="o-c2" style="background: #FFD6DE;">
+        <span class="pin" aria-hidden="true"></span>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="8" r="5"></circle><circle cx="12" cy="24" r="5"></circle><circle cx="36" cy="24" r="5"></circle><circle cx="6" cy="40" r="4"></circle><circle cx="18" cy="40" r="4"></circle><path d="M21 12 L15 20 M27 12 L33 20 M10 28 L7 36 M14 28 L17 36"></path></svg>
+        <h3>Data Structures &amp; Algorithms</h3>
+      </div>
+      <div class="course obj" id="o-c3" style="background: #D3E6FF;">
+        <span class="pin" aria-hidden="true"></span>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="6" width="16" height="11" rx="2"></rect><rect x="28" y="6" width="16" height="11" rx="2"></rect><rect x="16" y="31" width="16" height="11" rx="2"></rect><path d="M12 17 V24 H36 V17 M24 24 V31"></path></svg>
+        <h3>Software Engineering</h3>
+      </div>
+      <div class="course obj" id="o-c4" style="background: #D8F5D0;">
+        <span class="pin" aria-hidden="true"></span>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="8" cy="12" r="4"></circle><circle cx="8" cy="36" r="4"></circle><circle cx="24" cy="8" r="4"></circle><circle cx="24" cy="24" r="4"></circle><circle cx="24" cy="40" r="4"></circle><circle cx="40" cy="24" r="4"></circle><path d="M12 12 L20 8 M12 12 L20 24 M12 12 L20 40 M12 36 L20 8 M12 36 L20 24 M12 36 L20 40 M28 8 L36 24 M28 24 L36 24 M28 40 L36 24"></path></svg>
+        <h3>Machine Learning</h3>
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <section class="about" aria-label="About and contact">
+      <div class="index obj" id="o-school">
+        <span class="pin" aria-hidden="true"></span>
+        <h2>School</h2>
+        <dl>
+          <dt>Studying</dt><dd>BSc Computer Science, University of Alberta, Edmonton</dd>
+          <dt>Years</dt><dd>Sept 2024 – 2028</dd>
+        </dl>
+      </div>
+      <div class="index toolbox obj" id="o-toolbox">
+        <span class="pin" aria-hidden="true"></span>
+        <h2>Toolbox</h2>
+        <dl>
+          <dt>Languages</dt><dd>Python, Java, C, SQL, TypeScript, JavaScript</dd>
+          <dt>Frameworks</dt><dd>React, React Native, FastAPI, REST APIs</dd>
+          <dt>Tools</dt><dd>Git, GitHub, VS Code, Android Studio, Gradle, STM32CubeIDE, IAR EWARM, Expo, uv, ruff, Vercel, Render, GitHub Copilot, Claude Code</dd>
+        </dl>
+      </div>
+      <div class="ribbon obj" id="o-ribbon" role="img" aria-label="Hackathon ribbon: natHacks, HackED, StormHacks">
+        <b>HACKER</b>
+        <span>natHacks HackED StormHacks</span>
+      </div>
+      <div class="sticky obj" id="contact">
+        <span class="pin" aria-hidden="true"></span>
+        <h2>say hi!</h2>
+        <a href="mailto:lemueljd12@gmail.com">lemueljd12@gmail.com</a>
+        <a href="https://linkedin.com/in/lemuel-dipasupil-483aa3347" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/Lem-D" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </section>
+  </div>
+  <p class="foot">pinned up by Lem, 2026</p>
+</div>
+<div class="detail" id="detail" hidden>
+  <div class="detail-card" role="dialog" aria-modal="true" aria-label="Details">
+    <button type="button" class="detail-close" aria-label="Close">×</button>
+    <div class="detail-body"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  function fit() {
+    var s = Math.min((innerWidth - 32) / 1700, (innerHeight - 32) / 940);
+    if (s >= 0.68) { root.classList.add('stage'); root.style.setProperty('--s', Math.min(s, 1.4)); }
+    else { root.classList.remove('stage'); }
+  }
+  fit();
+  addEventListener('resize', fit);
+
+  var detail = document.getElementById('detail');
+  var body = detail.querySelector('.detail-body');
+  var closeBtn = detail.querySelector('.detail-close');
+  var opener = null;
+  function open(node, from) { node.removeAttribute('id'); node.removeAttribute('tabindex'); node.removeAttribute('role'); body.innerHTML = ''; body.appendChild(node); opener = from; detail.hidden = false; closeBtn.focus(); }
+  document.querySelectorAll('.item > .polaroid, .item > .patch-wrap, .item > .badge-wrap, .work > .button-pin').forEach(function (v) {
+    var name = v.closest('.item, .work').querySelector('.note h3').textContent;
+    v.classList.add('shake'); v.setAttribute('tabindex', '0'); v.setAttribute('role', 'button'); v.setAttribute('aria-label', 'Show details: ' + name);
+    v.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); v.click(); } });
+  });
+  document.querySelectorAll('.snap').forEach(function (s) {
+    s.classList.add('shake');
+    s.setAttribute('tabindex', '0'); s.setAttribute('role', 'button'); s.setAttribute('aria-label', 'Enlarge photo: ' + s.querySelector('img').alt);
+    s.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); s.click(); } });
+  });
+  function close() { detail.hidden = true; body.innerHTML = ''; if (opener) opener.focus(); }
+  document.addEventListener('click', function (e) {
+    var snap = e.target.closest('.snap');
+    if (snap && !detail.contains(snap)) { open(snap.cloneNode(true), snap); return; }
+    var visual = e.target.closest('.shake');
+    var btn = e.target.closest('.more-btn') || (visual && !detail.contains(visual) ? visual : null);
+    if (btn) {
+      var copy = btn.closest('.item, .work').querySelector('.note').cloneNode(true);
+      var h = copy.querySelector('h3'); if (h) h.id = 'detail-title';
+      body.innerHTML = ''; body.appendChild(copy);
+      opener = btn; detail.hidden = false; closeBtn.focus();
+    } else if (e.target === detail || e.target === closeBtn) { close(); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !detail.hidden) close(); });
+})();
+</script>
+</body>
+</html>
